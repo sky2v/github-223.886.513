@@ -1,6 +1,6 @@
-<idea-plugin package="cn.osc.gitee.github">
-  <name>GitHub</name>
-  <id>cn.osc.gitee.github</id>
+<idea-plugin package="cn.osc.gitee">
+  <name>GitHub111</name>
+  <id>cn.osc.gitee</id>
   <vendor>JetBrains</vendor>
   <category>Version Controls</category>
   <description>
@@ -15,7 +15,7 @@
       ]]>
   </description>
 
-  <resource-bundle>messages.GithubBundle</resource-bundle>
+  <resource-bundle>messages.GiteeBundle</resource-bundle>
 
   <dependencies>
     <plugin id="com.intellij.modules.lang"/>
@@ -23,82 +23,82 @@
   </dependencies>
 
   <extensions defaultExtensionNs="com.intellij">
-    <httpRequestHandler implementation="cn.osc.gitee.github.authentication.GHOAuthCallbackHandler"/>
+    <httpRequestHandler implementation="cn.osc.gitee.authentication.GEOAuthCallbackHandler"/>
 
-    <applicationService serviceImplementation="cn.osc.gitee.github.util.GithubSettings"/>
+    <applicationService serviceImplementation="cn.osc.gitee.util.GiteeSettings"/>
 
-    <applicationService serviceImplementation="cn.osc.gitee.github.authentication.accounts.GHPersistentAccounts"/>
-    <applicationService serviceImplementation="cn.osc.gitee.github.authentication.GithubAuthenticationManager"/>
-    <applicationService serviceImplementation="cn.osc.gitee.github.api.GithubApiRequestExecutor$Factory"/>
-    <applicationService serviceImplementation="cn.osc.gitee.github.api.GithubApiRequestExecutorManager"/>
-    <applicationService serviceImplementation="cn.osc.gitee.github.authentication.accounts.GithubAccountInformationProvider"/>
-    <applicationService serviceImplementation="cn.osc.gitee.github.util.CachingGHUserAvatarLoader"/>
+    <applicationService serviceImplementation="cn.osc.gitee.authentication.accounts.GEPersistentAccounts"/>
+    <applicationService serviceImplementation="cn.osc.gitee.authentication.GiteeAuthenticationManager"/>
+    <applicationService serviceImplementation="cn.osc.gitee.api.GiteeApiRequestExecutor$Factory"/>
+    <applicationService serviceImplementation="cn.osc.gitee.api.GiteeApiRequestExecutorManager"/>
+    <applicationService serviceImplementation="cn.osc.gitee.authentication.accounts.GiteeAccountInformationProvider"/>
+    <applicationService serviceImplementation="cn.osc.gitee.util.CachingGHUserAvatarLoader"/>
 
-    <projectService serviceImplementation="cn.osc.gitee.github.extensions.GHGitAuthenticationFailureManager"/>
-    <projectService serviceImplementation="cn.osc.gitee.github.util.GithubProjectSettings"/>
-    <projectService serviceImplementation="cn.osc.gitee.github.util.GithubSharedProjectSettings"/>
-    <projectService serviceImplementation="cn.osc.gitee.github.authentication.accounts.GithubProjectDefaultAccountHolder"/>
+    <projectService serviceImplementation="cn.osc.gitee.extensions.GEGitAuthenticationFailureManager"/>
+    <projectService serviceImplementation="cn.osc.gitee.util.GiteeProjectSettings"/>
+    <projectService serviceImplementation="cn.osc.gitee.util.GiteeSharedProjectSettings"/>
+    <projectService serviceImplementation="cn.osc.gitee.authentication.accounts.GiteeProjectDefaultAccountHolder"/>
 
-    <vcsAnnotationGutterActionProvider implementation="cn.osc.gitee.github.extensions.GHAnnotationGutterActionProvider"/>
+    <vcsAnnotationGutterActionProvider implementation="cn.osc.gitee.extensions.GEAnnotationGutterActionProvider"/>
     <projectConfigurable parentId="project.propVCSSupport.Mappings" groupWeight="-500"
-                         instance="cn.osc.gitee.github.ui.GithubSettingsConfigurable"/>
+                         instance="cn.osc.gitee.ui.GiteeSettingsConfigurable"/>
     <statistics.applicationUsagesCollector
-      implementation="cn.osc.gitee.github.authentication.accounts.GithubAccountsStatisticsCollector"/>
+      implementation="cn.osc.gitee.authentication.accounts.GiteeAccountsStatisticsCollector"/>
     <statistics.counterUsagesCollector
-      implementationClass="cn.osc.gitee.github.pullrequest.GHPRStatisticsCollector$Counters"/>
-    <statistics.notificationIdsHolder implementation="cn.osc.gitee.github.util.GithubNotificationIdsHolder"/>
-    <backgroundPostStartupActivity implementation="cn.osc.gitee.github.pullrequest.GHServerVersionsCollector$Initializer"/>
+      implementationClass="cn.osc.gitee.pullrequest.GEPRStatisticsCollector$Counters"/>
+    <statistics.notificationIdsHolder implementation="cn.osc.gitee.util.GiteeNotificationIdsHolder"/>
+    <backgroundPostStartupActivity implementation="cn.osc.gitee.pullrequest.GEServerVersionsCollector$Initializer"/>
 
-    <diff.DiffExtension implementation="cn.osc.gitee.github.pullrequest.ui.changes.GHPRViewedStateDiffExtension"/>
-    <diff.DiffExtension implementation="cn.osc.gitee.github.pullrequest.comment.GHPRReviewThreadsDiffExtension"/>
+    <diff.DiffExtension implementation="cn.osc.gitee.pullrequest.ui.changes.GEPRViewedStateDiffExtension"/>
+    <diff.DiffExtension implementation="cn.osc.gitee.pullrequest.comment.GEPRReviewThreadsDiffExtension"/>
     <openapi.vcs.ui.cloneDialog.VcsCloneDialogExtension
-      implementation="cn.osc.gitee.github.ui.cloneDialog.GHCloneDialogExtension"/>
+      implementation="cn.osc.gitee.ui.cloneDialog.GECloneDialogExtension"/>
     <openapi.vcs.ui.cloneDialog.VcsCloneDialogExtension
-      implementation="cn.osc.gitee.github.ui.cloneDialog.GHECloneDialogExtension"/>
+      implementation="cn.osc.gitee.ui.cloneDialog.GEECloneDialogExtension"/>
 
-    <virtualFileSystem key="ghpr" implementationClass="cn.osc.gitee.github.pullrequest.GHPRVirtualFileSystem"/>
-    <fileIconProvider implementation="cn.osc.gitee.github.pullrequest.GHPRVirtualFileIconProvider" order="first"/>
-    <fileEditorProvider implementation="cn.osc.gitee.github.pullrequest.GHPREditorProvider"/>
+    <virtualFileSystem key="ghpr" implementationClass="cn.osc.gitee.pullrequest.GEPRVirtualFileSystem"/>
+    <fileIconProvider implementation="cn.osc.gitee.pullrequest.GEPRVirtualFileIconProvider" order="first"/>
+    <fileEditorProvider implementation="cn.osc.gitee.pullrequest.GEPREditorProvider"/>
 
-    <toolWindow id="Pull Requests" icon="cn.osc.gitee.github.GithubIcons.PullRequestsToolWindow"
+    <toolWindow id="Pull Requests" icon="cn.osc.gitee.GiteeIcons.PullRequestsToolWindow"
                 anchor="left" doNotActivateOnStart="true"
-                factoryClass="cn.osc.gitee.github.pullrequest.GHPRToolWindowFactory"/>
+                factoryClass="cn.osc.gitee.pullrequest.GEPRToolWindowFactory"/>
 
     <diff.actions.ShowDiffAction.ExtensionProvider
-      implementation="cn.osc.gitee.github.pullrequest.action.GHPRShowDiffActionProvider"/>
+      implementation="cn.osc.gitee.pullrequest.action.GEPRShowDiffActionProvider"/>
     <diff.actions.ShowStandaloneDiffAction.ExtensionProvider
-      implementation="cn.osc.gitee.github.pullrequest.action.GHPRShowDiffActionProvider"/>
+      implementation="cn.osc.gitee.pullrequest.action.GEPRShowDiffActionProvider"/>
 
-    <fileIconProvider implementation="cn.osc.gitee.github.extensions.GithubYamlIconProvider"/>
+    <fileIconProvider implementation="cn.osc.gitee.extensions.GiteeYamlIconProvider"/>
 
     <registryKey defaultValue="true" description="Applying suggested changes" key="github.suggested.changes.apply"/>
-    <iconMapper mappingFile="GithubIconMappings.json"/>
+    <iconMapper mappingFile="GiteeIconMappings.json"/>
   </extensions>
 
   <extensions defaultExtensionNs="Git4Idea">
-    <GitHttpAuthDataProvider implementation="cn.osc.gitee.github.extensions.GHHttpAuthDataProvider"/>
-    <GitHttpAuthDataProvider implementation="cn.osc.gitee.github.extensions.GHComHttpAuthDataProvider"/>
-    <gitRepositoryHostingService implementation="cn.osc.gitee.github.extensions.GHRepositoryHostingService"/>
-    <gitProtectedBranchProvider implementation="cn.osc.gitee.github.util.GithubProtectedBranchProvider"/>
-    <gitFetchHandler implementation="cn.osc.gitee.github.extensions.GHProtectedBranchRulesLoader"/>
+    <GitHttpAuthDataProvider implementation="cn.osc.gitee.extensions.GEHttpAuthDataProvider"/>
+    <GitHttpAuthDataProvider implementation="cn.osc.gitee.extensions.GEComHttpAuthDataProvider"/>
+    <gitRepositoryHostingService implementation="cn.osc.gitee.extensions.GERepositoryHostingService"/>
+    <gitProtectedBranchProvider implementation="cn.osc.gitee.util.GiteeProtectedBranchProvider"/>
+    <gitFetchHandler implementation="cn.osc.gitee.extensions.GEProtectedBranchRulesLoader"/>
   </extensions>
 
   <actions>
-    <action id="Github.Share" class="cn.osc.gitee.github.GithubShareAction">
+    <action id="Gitee.Share" class="cn.osc.gitee.GiteeShareAction">
       <add-to-group group-id="Vcs.Import"/>
       <add-to-group group-id="Vcs.ToolbarWidget.ShareProject" relative-to-action="Start.Use.Vcs" anchor="before"/>
       <override-text place="Vcs.Toolbar.Widget"/>
     </action>
-    <action id="Github.Sync.Fork" class="cn.osc.gitee.github.GithubSyncForkAction">
+    <action id="Gitee.Sync.Fork" class="cn.osc.gitee.GiteeSyncForkAction">
       <add-to-group group-id="Git.Menu"/>
     </action>
-    <action id="Github.Create.Pull.Request" class="cn.osc.gitee.github.pullrequest.action.GHPRCreatePullRequestAction">
+    <action id="Gitee.Create.Pull.Request" class="cn.osc.gitee.pullrequest.action.GEPRCreatePullRequestAction">
       <add-to-group group-id="Git.Menu"/>
     </action>
-    <action id="Github.View.Pull.Request" class="cn.osc.gitee.github.GithubViewPullRequestsAction">
+    <action id="Gitee.View.Pull.Request" class="cn.osc.gitee.GiteeViewPullRequestsAction">
       <add-to-group group-id="Git.Menu"/>
     </action>
-    <action id="Github.Open.In.Browser" class="cn.osc.gitee.github.GHOpenInBrowserActionGroup">
+    <action id="Gitee.Open.In.Browser" class="cn.osc.gitee.GEOpenInBrowserActionGroup">
       <override-text place="EditorTabPopup"/>
       <override-text place="ProjectViewPopup" use-text-of-place="EditorTabPopup"/>
       <override-text place="EditorPopup" use-text-of-place="EditorTabPopup"/>
@@ -109,75 +109,75 @@
       <add-to-group group-id="VcsHistoryActionsGroup.Toolbar"/>
       <add-to-group group-id="VcsSelectionHistoryDialog.Popup" anchor="last"/>
     </action>
-    <action id="Github.Create.Gist" class="cn.osc.gitee.github.GithubCreateGistAction">
+    <action id="Gitee.Create.Gist" class="cn.osc.gitee.GiteeCreateGistAction">
       <add-to-group group-id="EditorPopupMenu"/>
       <add-to-group group-id="ProjectViewPopupMenu"/>
       <add-to-group group-id="EditorTabPopupMenu"/>
       <add-to-group group-id="ConsoleEditorPopupMenu"/>
     </action>
-    <group id="GitHub.MainMenu" popup="true">
-      <reference ref="Github.Share"/>
-      <reference ref="Github.Create.Pull.Request"/>
-      <reference ref="Github.View.Pull.Request"/>
-      <reference ref="Github.Sync.Fork"/>
-      <reference ref="Github.Create.Gist"/>
-      <reference ref="Github.Open.In.Browser"/>
+    <group id="Gitee.MainMenu" popup="true">
+      <reference ref="Gitee.Share"/>
+      <reference ref="Gitee.Create.Pull.Request"/>
+      <reference ref="Gitee.View.Pull.Request"/>
+      <reference ref="Gitee.Sync.Fork"/>
+      <reference ref="Gitee.Create.Gist"/>
+      <reference ref="Gitee.Open.In.Browser"/>
 
       <add-to-group group-id="Git.MainMenu" relative-to-action="Git.Configure.Remotes" anchor="before"/>
     </group>
-    <group id="Github.PullRequest.ToolWindow.List.Popup">
-      <action id="Github.PullRequest.Show"
-              class="cn.osc.gitee.github.pullrequest.action.GHPROpenPullRequestAction"/>
-      <reference id="Github.Open.In.Browser"/>
-      <action id="Github.PullRequest.List.Reload"
-              class="cn.osc.gitee.github.pullrequest.action.GHPRReloadListAction" use-shortcut-of="Refresh"/>
+    <group id="Gitee.PullRequest.ToolWindow.List.Popup">
+      <action id="Gitee.PullRequest.Show"
+              class="cn.osc.gitee.pullrequest.action.GEPROpenPullRequestAction"/>
+      <reference id="Gitee.Open.In.Browser"/>
+      <action id="Gitee.PullRequest.List.Reload"
+              class="cn.osc.gitee.pullrequest.action.GEPRReloadListAction" use-shortcut-of="Refresh"/>
     </group>
-    <group id="Github.PullRequest.Details.Popup">
-      <action id="Github.PullRequest.Timeline.Show"
-              class="cn.osc.gitee.github.pullrequest.action.GHPROpenPullRequestTimelineAction"/>
-      <reference id="Github.Open.In.Browser"/>
-      <action id="Github.PullRequest.Branch.Create"
-              class="cn.osc.gitee.github.pullrequest.action.GHPRCreateBranchAction"/>
-      <action id="Github.PullRequest.Branch.Update"
-              class="cn.osc.gitee.github.pullrequest.action.GHPRUpdateBranchAction"/>
-      <action id="Github.PullRequest.Details.Reload"
-              class="cn.osc.gitee.github.pullrequest.action.GHPRReloadDetailsAction" use-shortcut-of="Refresh"/>
+    <group id="Gitee.PullRequest.Details.Popup">
+      <action id="Gitee.PullRequest.Timeline.Show"
+              class="cn.osc.gitee.pullrequest.action.GEPROpenPullRequestTimelineAction"/>
+      <reference id="Gitee.Open.In.Browser"/>
+      <action id="Gitee.PullRequest.Branch.Create"
+              class="cn.osc.gitee.pullrequest.action.GEPRCreateBranchAction"/>
+      <action id="Gitee.PullRequest.Branch.Update"
+              class="cn.osc.gitee.pullrequest.action.GEPRUpdateBranchAction"/>
+      <action id="Gitee.PullRequest.Details.Reload"
+              class="cn.osc.gitee.pullrequest.action.GEPRReloadDetailsAction" use-shortcut-of="Refresh"/>
     </group>
-    <action id="Github.PullRequest.Changes.Reload"
-            class="cn.osc.gitee.github.pullrequest.action.GHPRReloadChangesAction" use-shortcut-of="Refresh"/>
-    <action id="Github.PullRequest.Comments.Reload"
-            class="cn.osc.gitee.github.pullrequest.action.GHPRReloadCommentsAction" use-shortcut-of="Refresh"/>
+    <action id="Gitee.PullRequest.Changes.Reload"
+            class="cn.osc.gitee.pullrequest.action.GEPRReloadChangesAction" use-shortcut-of="Refresh"/>
+    <action id="Gitee.PullRequest.Comments.Reload"
+            class="cn.osc.gitee.pullrequest.action.GEPRReloadCommentsAction" use-shortcut-of="Refresh"/>
 
-    <action id="Github.PullRequest.Review.Submit"
-            class="cn.osc.gitee.github.pullrequest.action.GHPRReviewSubmitAction"/>
+    <action id="Gitee.PullRequest.Review.Submit"
+            class="cn.osc.gitee.pullrequest.action.GEPRReviewSubmitAction"/>
 
-    <group id="Github.PullRequest.Changes.Toolbar">
+    <group id="Gitee.PullRequest.Changes.Toolbar">
       <reference id="Diff.ShowDiff"/>
-      <reference id="Github.PullRequest.Review.Submit"/>
+      <reference id="Gitee.PullRequest.Review.Submit"/>
       <separator/>
       <reference id="ChangesView.GroupBy"/>
     </group>
 
-    <group id="Github.PullRequest.Changes.Popup">
+    <group id="Gitee.PullRequest.Changes.Popup">
       <reference id="Diff.ShowDiff"/>
       <reference id="Diff.ShowStandaloneDiff"/>
-      <reference id="Github.PullRequest.Changes.Reload"/>
-      <action id="Github.PullRequest.Changes.MarkViewed"
-              class="cn.osc.gitee.github.pullrequest.action.GHPRMarkFilesViewedAction"/>
-      <action id="Github.PullRequest.Changes.MarkNotViewed"
-              class="cn.osc.gitee.github.pullrequest.action.GHPRMarkFilesNotViewedAction"/>
+      <reference id="Gitee.PullRequest.Changes.Reload"/>
+      <action id="Gitee.PullRequest.Changes.MarkViewed"
+              class="cn.osc.gitee.pullrequest.action.GEPRMarkFilesViewedAction"/>
+      <action id="Gitee.PullRequest.Changes.MarkNotViewed"
+              class="cn.osc.gitee.pullrequest.action.GEPRMarkFilesNotViewedAction"/>
     </group>
 
-    <group id="Github.PullRequest.Timeline.Popup">
-      <action id="Github.PullRequest.Timeline.Update"
-              class="cn.osc.gitee.github.pullrequest.action.GHPRUpdateTimelineAction" use-shortcut-of="Refresh"/>
+    <group id="Gitee.PullRequest.Timeline.Popup">
+      <action id="Gitee.PullRequest.Timeline.Update"
+              class="cn.osc.gitee.pullrequest.action.GEPRUpdateTimelineAction" use-shortcut-of="Refresh"/>
     </group>
 
-    <action id="Github.Break.Api.Requests" internal="true"
-            class="cn.osc.gitee.github.api.GHRequestExecutorBreaker$Action"/>
+    <action id="Gitee.Break.Api.Requests" internal="true"
+            class="cn.osc.gitee.api.GERequestExecutorBreaker$Action"/>
 
-    <action id="Github.PullRequest.Diff.Comment.Create"
-            class="cn.osc.gitee.github.pullrequest.comment.action.GHPRCreateDiffCommentAction">
+    <action id="Gitee.PullRequest.Diff.Comment.Create"
+            class="cn.osc.gitee.pullrequest.comment.action.GEPRCreateDiffCommentAction">
       <keyboard-shortcut first-keystroke="control shift X" keymap="$default"/>
       <keyboard-shortcut first-keystroke="control shift X" keymap="Eclipse" remove="true"/>
       <keyboard-shortcut first-keystroke="control shift X" keymap="Eclipse (Mac OS X)" remove="true"/>
@@ -186,11 +186,11 @@
       <add-to-group group-id="Diff.EditorPopupMenu"/>
     </action>
 
-    <action id="GithubCopyPathProvider" class="cn.osc.gitee.github.GithubCopyPathProvider" icon="AllIcons.Vcs.Vendors.Github">
+    <action id="GiteeCopyPathProvider" class="cn.osc.gitee.GiteeCopyPathProvider" icon="AllIcons.Vcs.Vendors.Github">
       <add-to-group group-id="CopyFileReference"/>
     </action>
 
-    <action id="Github.Copy.Link.To.GitHub" class="cn.osc.gitee.github.GithubCopyPathProvider" icon="AllIcons.Vcs.Vendors.Github">
+    <action id="Gitee.Copy.Link.To.GitHub" class="cn.osc.gitee.GiteeCopyPathProvider" icon="AllIcons.Vcs.Vendors.Github">
       <add-to-group group-id="Copy.Paste.Special" relative-to-action="CopyReference" anchor="after"/>
     </action>
   </actions>

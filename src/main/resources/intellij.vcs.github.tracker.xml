@@ -1,8 +1,8 @@
-<idea-plugin package="cn.osc.gitee.github.tasks">
+<idea-plugin package="cn.osc.gitee.tasks">
   <dependencies>
     <plugin id="com.intellij.tasks"/>
   </dependencies>
   <extensions defaultExtensionNs="com.intellij">
-    <tasks.repositoryType implementation="cn.osc.gitee.github.tasks.GithubRepositoryType"/>
+    <tasks.repositoryType implementation="cn.osc.gitee.tasks.GiteeRepositoryType"/>
   </extensions>
 </idea-plugin>
