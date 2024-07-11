@@ -1,6 +1,6 @@
 <idea-plugin package="cn.osc.gitee">
   <name>GitHub111</name>
-  <id>cn.osc.gitee</id>
+  <id>cn.osc.gitee.demo</id>
   <vendor>JetBrains</vendor>
   <category>Version Controls</category>
   <description>
