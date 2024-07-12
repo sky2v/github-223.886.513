@@ -1,6 +1,6 @@
 <idea-plugin package="cn.osc.gitee">
   <name>GitHub111</name>
-  <id>cn.osc.gitee.demo</id>
+  <id>cn.osc.gitee</id>
   <vendor>JetBrains</vendor>
   <category>Version Controls</category>
   <description>
@@ -60,7 +60,7 @@
     <fileIconProvider implementation="cn.osc.gitee.pullrequest.GEPRVirtualFileIconProvider" order="first"/>
     <fileEditorProvider implementation="cn.osc.gitee.pullrequest.GEPREditorProvider"/>
 
-    <toolWindow id="Pull Requests" icon="cn.osc.gitee.GiteeIcons.PullRequestsToolWindow"
+    <toolWindow id="Pull Requests11" icon="cn.osc.gitee.GiteeIcons.PullRequestsToolWindow"
                 anchor="left" doNotActivateOnStart="true"
                 factoryClass="cn.osc.gitee.pullrequest.GEPRToolWindowFactory"/>
 

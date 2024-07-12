@@ -7,6 +7,11 @@ plugins {
 group = "cn.osc.gitee"
 version = "1.0-SNAPSHOT"
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
 repositories {
     mavenCentral()
 }
@@ -18,6 +23,10 @@ intellij {
     type.set("IC") // Target IDE Platform
 
     plugins.set(listOf("Git4Idea", "tasks"))
+}
+
+sourceSets.main {
+    java.srcDirs("src/main/kotlin")
 }
 
 tasks {

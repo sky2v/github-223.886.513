@@ -31,7 +31,7 @@ import javax.swing.JPanel
 
 internal class GEPRToolWindowFactory : ToolWindowFactory, DumbAware {
   companion object {
-    const val ID = "Pull Requests"
+    const val ID = "Pull Requests111"
   }
 
   override fun init(toolWindow: ToolWindow) {
