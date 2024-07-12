@@ -12,7 +12,7 @@ import cn.osc.gitee.authentication.accounts.GiteeAccount
 import cn.osc.gitee.util.GEGitRepositoryMapping
 import cn.osc.gitee.util.GEHostedRepositoriesManager
 
-@Service
+@Service(Service.Level.PROJECT)
 @State(name = "GiteePullRequestsUISettings", storages = [Storage(StoragePathMacros.WORKSPACE_FILE)], reportStatistic = false)
 class GiteePullRequestsProjectUISettings(private val project: Project)
   : PersistentStateComponentWithModificationTracker<GiteePullRequestsProjectUISettings.SettingsState> {
